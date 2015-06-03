@@ -1,19 +1,24 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var ejs =require('ejs');
+/**
+ *	Mall - app.js
+ * */
 
-//var routes = require('./routes/index');
-//var users = require('./routes/users');
-var webRouter = require('./web_router.js');
+var config = require('./config');
+
+
+var express			= require('express');
+var path			= require('path');
+var favicon			= require('serve-favicon');
+var logger			= require('morgan');
+var cookieParser	= require('cookie-parser');
+var bodyParser		= require('body-parser');
+var ejs				= require('ejs');
+
+var webRouter		= require('./web_router.js');
 
 var app = express();
 
 // view engine setup
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || config.port);
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.html', ejs.__express);
 app.set('view engine', 'html');
@@ -69,6 +74,6 @@ app.use(function(err, req, res, next) {
   });
 });
 
-app.listen(app.get('port'), function() {
-	console.log('Mall server listening on port ' + app.get('port'));
+app.listen(config.port, function() {
+	console.log('Mall server listening on port ' + config.port);
 });
