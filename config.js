@@ -1,5 +1,5 @@
 /**
- *	config
+ *	config t
  */
 
 var path = require('path');
