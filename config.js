@@ -18,7 +18,7 @@ var config = {
 	redis_db:0,
 
 	//程序运行端口
-	port: 3000,
+	port: 3003,
 };
 
 module.exports = config;

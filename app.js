@@ -24,15 +24,15 @@ app.engine('.html', ejs.__express);
 app.set('view engine', 'html');
 
 //LOG后台输出
-var fs = require('fs');
-var accessLog = fs.createWriteStream('access.log', {flags: 'a'});
-var errorLog = fs.createWriteStream('error.log', {flags: 'a'});
+//var fs = require('fs');
+//var accessLog = fs.createWriteStream('access.log', {flags: 'a'});
+//var errorLog = fs.createWriteStream('error.log', {flags: 'a'});
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
-//app.use(logger('dev'));
+app.use(logger('dev'));
 //debug message
-app.use(logger({stream: accessLog}));
+//app.use(logger({stream: accessLog}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
