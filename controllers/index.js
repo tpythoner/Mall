@@ -9,5 +9,7 @@ exports.index = function(req, res) {
 };
 
 exports.update =function(req, res) {
+	console.log(req.params.opt);
+	console.log(req.query.names);
 	res.send('dedecms is my');
 };

@@ -6,6 +6,6 @@ var index = require('./controllers/index');
 
 //Index
 router.get('/', index.index);
-router.get('/update', index.update);
+router.get('/update/:opt', index.update);
 
 module.exports = router;
