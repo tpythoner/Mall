@@ -2,8 +2,8 @@ var User = require('../models/user');
 
 exports.index = function(req, res) {
 	//res.send('hello, world');
-	User.getUserName('tony', function(data) {
-		console.log(data.code);
+	User.getUserName('', function(data) {
+		console.log(data);
 	});
 	res.render('', {title: '主页'});
 };

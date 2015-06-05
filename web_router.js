@@ -4,8 +4,8 @@ var router = express.Router();
 var index = require('./controllers/index');
 
 
+//Index
 router.get('/', index.index);
-
 router.get('/update', index.update);
 
 module.exports = router;
