@@ -19,6 +19,10 @@ var config = {
 
 	//程序运行端口
 	port: 3003,
+
+	//远程借口
+	server_host: '192.168.1.222',
+	server_port: 80,
 };
 
 module.exports = config;

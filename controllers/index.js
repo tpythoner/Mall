@@ -1,4 +1,5 @@
 var User = require('../models/user');
+var Request = require('../models/request');
 
 exports.index = function(req, res) {
 	var iData = User.getUserName('tony', function(data) {
@@ -11,9 +12,12 @@ exports.index = function(req, res) {
 };
 
 exports.update =function(req, res) {
+	Request.get(req, '/longye/manageUserManage/queryUser', {code: 12}, function(data) {
+		console.log(data);
+	});
 
-	console.log(req.params.opt);
-	console.log(req.query.names);
-	res.redirect('http://www.baidu.com');
-	res.send('dedecms is my');
+	res.send('admin');
+	
+	//res.redirect('/');
+	//res.send('dedecms is my');
 };
