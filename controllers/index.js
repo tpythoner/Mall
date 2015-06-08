@@ -12,19 +12,50 @@ exports.index = function(req, res) {
 	res.render('', {'title': iData.title, 'id': iId.id});
 };
 
-exports.update =function(req, res) {
+exports.update =function(req, res, next) {
 	var proxy = new EventProxy();
+	proxy.fail(next);
 	
-	Request.get(req, '/longye/manageUserManage/queryUser', {code: 12}, function(data) {
-		proxy.emit("get", data);
+	Request.get(req, '/longye/manageUserManage/queryUser', {code: 12}, proxy.done('get', function(data) {
+		//proxy.emit("get", data);
+		return data;
+	}));
+	/*	proxy调用方式
+	fs.readFile('foo.txt', ep.done('content', function (content) {
+	  return content.trim();
+	}));
+
+	// equal to =>
+
+	fs.readFile('foo.txt', function (err, content) {
+	  if (err) {
+		return ep.emit('error', err);
+	  }
+	  ep.emit('content', content.trim());
 	});
-	Request.get(req, '/longye/manageUserManage/queryUser', {code: 12}, function(data) {
+	*/
+	Request.get(req, '/longye/manageUserManage/queryUser', {code: 12}, function(err, data) {
 		proxy.emit("result", data);
 	});
 
-	proxy.all("get", 'result', function (gets, result) {
+	Request.get(req, '/longye/manageUserManage/queryUser', {code: 12}, proxy.done('three'));
+	
+	/*proxy调用方式
+	fs.readFile('foo.txt', ep.done('content'));
+
+	// equal to =>
+
+	fs.readFile('foo.txt', function (err, content) {
+	  if (err) {
+		return ep.emit('error', err);
+	  }
+	  ep.emit('content', content);
+	});
+	*/
+	proxy.all("get", 'result', 'three', function (gets, result, three) {
 	    console.log(gets);
 		console.log(result);
+		console.log(three);
 	});
 	res.send('admin');
 	
