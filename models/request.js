@@ -22,7 +22,7 @@ exports.post = function(req, url, data, callback) {
 			data += d;
 		}).on('end' , function(){
 			data = JSON.parse(data);
-			callback(data);
+			return callback(data);
 		});
 	}).on('error', function (e) {  
 	    console.log('problem with request: ' + e.message);  
@@ -51,7 +51,7 @@ exports.get = function(req, url, data, callback) {
 			data += d;
 		}).on('end', function() {
 			data = JSON.parse(data);
-			callback(data);
+			return callback(data);
 		});
 	}).on('error', function (e) {  
     	console.log('problem with request: ' + e.message);  
