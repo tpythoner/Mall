@@ -13,6 +13,10 @@ exports.index = function(req, res) {
 };
 
 exports.update =function(req, res, next) {
+	console.log(req.params.opt);
+	console.log(req.query.names);
+	//console.log(req.body.);
+	//解决异步调用的问题
 	var proxy = new EventProxy();
 	proxy.fail(next);
 	
