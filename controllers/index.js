@@ -60,8 +60,9 @@ exports.update =function(req, res, next) {
 	    console.log(gets);
 		console.log(result);
 		console.log(three);
+		res.render('update', {title:'admin'});
 	});
-	res.send('admin');
+	//res.send('admin');
 	
 	//res.redirect('/');
 	//res.send('dedecms is my');
