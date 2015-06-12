@@ -1,12 +1,12 @@
 /**
- *	config t
+ *	config
  */
 
 var path = require('path');
 
 var config = {
 	// debug 为true时，用户本地调试
-	debug: true,
+	debug: false,
 
 	name: 'Mall',
 	description: '',
