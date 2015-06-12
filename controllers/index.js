@@ -1,6 +1,7 @@
 var User = require('../models/user');
 var Request = require('../models/request');
 var EventProxy = require('eventproxy');
+var Log = require('log4js').getLogger("index");
 
 exports.index = function(req, res) {
 	var iData = User.getUserName('tony', function(data) {
@@ -9,6 +10,7 @@ exports.index = function(req, res) {
 	var iId = User.getUserId('12576', function(data) {
 		return data;
 	});
+	Log.debug(iData);
 	res.render('', {'title': iData.title, 'id': iId.id});
 };
 

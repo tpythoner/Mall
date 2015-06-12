@@ -1,0 +1,2 @@
+[2015-06-12 22:31:40.843] [ERROR] app - Something went wrong: { status: 404 }
+[2015-06-12 22:31:40.847] [ERROR] http - 127.0.0.1 - - "GET /favicon.ico HTTP/1.1" 404 1017 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.81 Safari/537.36"

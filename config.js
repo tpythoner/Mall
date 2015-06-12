@@ -18,7 +18,7 @@ var config = {
 	redis_db:0,
 
 	//程序运行端口
-	port: 3003,
+	port: 3000,
 
 	//远程借口
 	server_host: '192.168.1.222',
