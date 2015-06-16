@@ -3,8 +3,7 @@ var Request = require('../models/request');
 var EventProxy = require('eventproxy');
 var Log = require('log4js').getLogger("index");
 
-exports.index = function(req, res) 
-{
+exports.index = function(req, res) {
 	var iData = User.getUserName('tony', function(data) {
 		return data;
 	});
@@ -15,8 +14,7 @@ exports.index = function(req, res)
 	res.render('', {'title': iData.title, 'id': iId.id});
 };
 
-exports.update =function(req, res, next) 
-{
+exports.update =function(req, res, next) {
 	console.log(req.params.opt);
 	console.log(req.query.names);
 	//console.log(req.body.);
