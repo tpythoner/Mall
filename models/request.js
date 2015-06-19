@@ -32,7 +32,7 @@ exports.post = function(req, url, data, callback) {
 	req.end(); 
 };
 
-//get请求
+// get请求
 exports.get = function(req, url, data, callback) {
 	var content = qs.stringify(data);  
   
