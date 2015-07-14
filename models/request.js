@@ -8,11 +8,11 @@ exports.post = function(req, url, data, callback) {
 	var content = qs.stringify(data);
 	
 	var options = {  
-	    hostname: config.server_host,  
-	    port: config.server_port,  
-	    path: url,  
-	    method: 'POST',  
-	    headers: req.headers
+	    hostname : config.server_host,  
+	    port : config.server_port,  
+	    path : url,  
+	    method : 'POST',  
+	    headers : req.headers
 	};
 
 	var req = http.request(options, function (res) {  
@@ -36,12 +36,12 @@ exports.post = function(req, url, data, callback) {
 exports.get = function(req, url, data, callback) {
 	var content = qs.stringify(data);  
   
-	var options = {  
-   		hostname: config.server_host,
-    	port: config.server_port,  
-    	path: url + '?' + content,  
-    	method: 'GET',
-		headers: req.headers
+	var options = {
+		hostname : config.server_host,
+		port : config.server_port,
+		path : url + '?' + content,
+		method : 'GET',
+		headers : req.headers
 	};
 
 	var req = http.request(options, function (res) {  
