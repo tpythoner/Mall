@@ -4,23 +4,30 @@ var EventProxy = require('eventproxy');
 var Log = require('log4js').getLogger("index");
 
 exports.index = function(req, res, next) {
-	var iData = User.getUserName('tony', function(data) {
-		return data;
-	});
-	var iId = User.getUserId('12576', function(data) {
-		return data;
-	});
+	
+	Request.token(function(err, token) {
+		if (token.code == 0) {
+			var proxy = new EventProxy();
+			proxy.fail(next);
 
-	var proxy = new EventProxy();
-	proxy.fail(next);
+			Request.get(token.data, '/invite/lists', {uid : 91315}, function(err, data) {
+				proxy.emit("result", data);
+			});
 
-	Request.get(req, '/', {}, function(err, data) {
-		proxy.emit("result", data);
-	})
+			Request.post(token.data, '/news/detail', {id : 5}, function(err, data) {
+				proxy.emit("list", data);
+			});
 
-	proxy.all('result', function (result) {
-		console.log(result);
-		res.render('', {'title': result.errmsg, 'id': iId.id});
+			Request.token(function(err, data) {
+				proxy.emit("token", data);
+			});
+
+			proxy.all('result', 'list', 'token', function (result, list, token) {
+				res.render('', {'title': result.msg});
+			});
+		} else {
+			res.send({'err' : 'error token'});
+		}
 	});
 
 };
