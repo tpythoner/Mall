@@ -21,7 +21,8 @@ var config = {
 	port: 3000,
 
 	//远程借口
-	server_host: '192.168.1.222',
+	server_host: '123.57.254.17',
+	//server_host: 'mobile.yuanbaobang.com',
 	server_port: 80,
 };
 

@@ -1,6 +1,7 @@
 var http = require('http');
 var config = require('../config');
 var qs = require('querystring');
+var Log = require('log4js').getLogger("request");
 
 
 // post请求

@@ -114,7 +114,7 @@ define(function(require, exports, module) {
     }
 
 	mobile.prototype.test = function() {
-		alert('test mobile');
+		console.log('test mobile');
 	}
 
 

@@ -3,15 +3,26 @@ var Request = require('../models/request');
 var EventProxy = require('eventproxy');
 var Log = require('log4js').getLogger("index");
 
-exports.index = function(req, res) {
+exports.index = function(req, res, next) {
 	var iData = User.getUserName('tony', function(data) {
 		return data;
 	});
 	var iId = User.getUserId('12576', function(data) {
 		return data;
 	});
-	Log.debug(iData);
-	res.render('', {'title': iData.title, 'id': iId.id});
+
+	var proxy = new EventProxy();
+	proxy.fail(next);
+
+	Request.get(req, '/', {}, function(err, data) {
+		proxy.emit("result", data);
+	})
+
+	proxy.all('result', function (result) {
+		console.log(result);
+		res.render('', {'title': result.errmsg, 'id': iId.id});
+	});
+
 };
 
 exports.update = function(req, res, next) {
